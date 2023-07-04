@@ -21,6 +21,7 @@
 #include "imgui/imgui_impl_glfw_gl3.h"
 
 #include "tests/TestClearColor.h"
+#include "tests/TestMenu.h"
 
 
 int main(void)
@@ -107,6 +108,7 @@ int main(void)
         ImGui::StyleColorsDark();
         
         test::TestClearColor test;
+        test::TestMenu testMenu;
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
@@ -114,12 +116,18 @@ int main(void)
             /* Render here */
             renderer.Clear();
 
-            test.OnUpdate(0.0f);
-            test.OnRender();
+            testMenu.OnUpdate(0.0f);
+            // test.OnUpdate(0.0f);
+
+            // test.OnRender();
+            testMenu.OnRender();
 
             ImGui_ImplGlfwGL3_NewFrame();
 
-            test.OnImGuiRender();
+            // test.OnImGuiRender();
+            testMenu.OnImGuiRender();
+
+            ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 
             ImGui::Render();
             ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
