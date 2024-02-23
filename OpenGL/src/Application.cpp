@@ -32,9 +32,11 @@ int main(void)
     if (!glfwInit())
         return -1;
 
+    /*
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    */
 
     /* Create a windowed mode window and its OpenGL context */
     window = glfwCreateWindow(960, 540, "your mum", NULL, NULL);
@@ -47,9 +49,10 @@ int main(void)
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
 
-    glfwSwapInterval(1);
+    //glfwSwapInterval(1);
 
     /* GLEW Init called after GL context is made */
+   /*
     if (glewInit() != GLEW_OK)
     {
         std::cout << "error" << std::endl;
@@ -71,26 +74,42 @@ int main(void)
         test::TestMenu testMenu;
 
         /* Loop until the user closes the window */
+        
+    /*}
+    */
         while (!glfwWindowShouldClose(window))
         {
             /* Render here */
-            renderer.Clear();
 
-            testMenu.OnUpdate(0.0f);
+            //drawing triangle
+            
+            glClear(GL_COLOR_BUFFER_BIT);
+
+            glBegin(GL_TRIANGLES);
+
+            glVertex2f(-0.5, -0.5);
+            glVertex2f(0.0, 0.5);
+            glVertex2f(0.5, -0.5);
+            
+            glEnd();
+
+           //renderer.Clear();
+
+            //testMenu.OnUpdate(0.0f);
             // test.OnUpdate(0.0f);
 
             // test.OnRender();
-            testMenu.OnRender();
+           // testMenu.OnRender();
 
-            ImGui_ImplGlfwGL3_NewFrame();
+            //ImGui_ImplGlfwGL3_NewFrame();
 
             // test.OnImGuiRender();
-            testMenu.OnImGuiRender();
+            //testMenu.OnImGuiRender();
 
-            ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+          //  ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 
-            ImGui::Render();
-            ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
+          //  ImGui::Render();
+          //  ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
 
             /* Swap front and back buffers */
             glfwSwapBuffers(window);
@@ -98,11 +117,13 @@ int main(void)
             /* Poll for and process events */
             glfwPollEvents();
         }
-    }
 
     // Cleanup
+    /*
     ImGui_ImplGlfwGL3_Shutdown();
     ImGui::DestroyContext();
+    */
     glfwTerminate();
     return 0;
+    
 }
