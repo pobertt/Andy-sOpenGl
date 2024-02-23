@@ -39,7 +39,7 @@ int main(void)
     */
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(960, 540, "your mum", NULL, NULL);
+    window = glfwCreateWindow(960, 540, "Practice App", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -49,15 +49,17 @@ int main(void)
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
 
-    //glfwSwapInterval(1);
-
     /* GLEW Init called after GL context is made */
-   /*
     if (glewInit() != GLEW_OK)
     {
         std::cout << "error" << std::endl;
     };
 
+    std::cout << glGetString(GL_VERSION) << std::endl;
+
+    //glfwSwapInterval(1);
+    
+    /*
     std::cout << glGetString(GL_VERSION) << std::endl;
 
     {
@@ -93,23 +95,25 @@ int main(void)
             
             glEnd();
 
-           //renderer.Clear();
+            /*
+            renderer.Clear();
 
-            //testMenu.OnUpdate(0.0f);
-            // test.OnUpdate(0.0f);
+            testMenu.OnUpdate(0.0f);
+            test.OnUpdate(0.0f);
 
-            // test.OnRender();
-           // testMenu.OnRender();
+            test.OnRender();
+            testMenu.OnRender();
 
-            //ImGui_ImplGlfwGL3_NewFrame();
+            ImGui_ImplGlfwGL3_NewFrame();
 
-            // test.OnImGuiRender();
-            //testMenu.OnImGuiRender();
+            test.OnImGuiRender();
+            testMenu.OnImGuiRender();
 
-          //  ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+            ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 
-          //  ImGui::Render();
-          //  ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
+            ImGui::Render();
+            ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
+            */
 
             /* Swap front and back buffers */
             glfwSwapBuffers(window);
@@ -118,11 +122,12 @@ int main(void)
             glfwPollEvents();
         }
 
-    // Cleanup
+    //Cleanup
     /*
     ImGui_ImplGlfwGL3_Shutdown();
     ImGui::DestroyContext();
     */
+
     glfwTerminate();
     return 0;
     
